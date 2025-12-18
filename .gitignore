@@ -43,6 +43,7 @@ reports/*
 
 # Results
 results/
+cache/
 
 # OS
 .DS_Store

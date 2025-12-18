@@ -34,10 +34,10 @@ class OSWorldConfig:
     headless: bool = False
     screen_width: int = 1920
     screen_height: int = 1080
-    sleep_after_execution: float = 3.0
-    max_steps: int = 15
-    reset_wait_seconds: int = 60
-    post_eval_wait_seconds: int = 20
+    sleep_after_execution: float = 1.0
+    max_steps: int = 10
+    reset_wait_seconds: int = 5
+    post_eval_wait_seconds: int = 5
     require_a11y_tree: bool = False
     require_terminal: bool = False
     enable_proxy: bool = False
@@ -107,8 +107,9 @@ class OSWorldGreenAgentExecutor(AgentExecutor):
             config_dict = json.loads(tags["env_config"])
 
         config = OSWorldConfig(**config_dict)
-        results = await run_osworld_assessment_remote(white_agent_url, config)
 
+        # Run the assessment synchronously so AgentBeats waits for real results.
+        results = await run_osworld_assessment_remote(white_agent_url, config)
         summary = {
             "success_rate": results.get("success_rate"),
             "successes": results.get("successes"),
