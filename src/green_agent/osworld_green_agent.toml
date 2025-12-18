@@ -1,0 +1,39 @@
+protocolVersion = "0.3.0"
+name = "osworld_green_agent"
+description = "The assessment hosting agent for OSWorld."
+version = "0.1.0"
+preferredTransport = "JSONRPC"
+
+defaultInputModes = ["text/plain"]
+defaultOutputModes = ["text/plain"]
+
+[capabilities]
+streaming = false
+pushNotifications = false
+stateTransitionHistory = false
+
+[[skills]]
+id = "host_assess_osworld"
+name = "OSWorld assessment hosting"
+description = "Assess the GUI-task completion ability of an agent using OSWorld."
+tags = ["green agent", "assessment hosting", "osworld"]
+examples = ["""
+Your task is to run OSWorld to test the agent located at:
+<white_agent_url>
+http://localhost:9002/
+</white_agent_url>
+Use the following OSWorld configuration:
+<osworld_config>
+{
+  "provider_name": "vmware",
+  "path_to_vm": "/path/to/Ubuntu.vmx",
+  "action_space": "computer_13",
+  "screen_width": 1920,
+  "screen_height": 880,
+  "sleep_after_execution": 3,
+  "max_steps": 15,
+  "osworld_base_dir": "/Users/you/OSWorld",
+  "test_all_meta_path": "/Users/you/OSWorld/evaluation_examples/test_small.json"
+}
+</osworld_config>
+"""]
