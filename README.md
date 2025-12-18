@@ -7,6 +7,7 @@ Example code for agentifying OSWorld using A2A and MCP standards.
 ```
 src/
 ├── green_agent/    # Assessment manager agent
+├── white_agent/    
 └── my_util/        # A2A helpers and tag parsing
 osworld_runner/     # Python 3.10 OSWorld runner service
 ```
